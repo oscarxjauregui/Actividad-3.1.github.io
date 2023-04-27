@@ -1,1 +1,69 @@
-hola
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Actividad 3.6.4</title>
+        <script src="jquery-3.6.4min.js"></script>
+    </head>
+    <style>
+        .s1 {
+            margin-left: .1em;
+            margin-top: 0em;
+            font-size: 2em;
+            font-family: 'helvetica';
+            margin-bottom: 0em;
+        }
+        .btn {
+            width: 10em;
+            height: 2em;
+            margin-top: 0.5em;
+            font-family: 'helvetica';
+        }
+        .s2{
+            margin-left: .1em;
+            margin-top: 2em;
+            font-size: 1em;
+            font-family: 'helvetica';
+            margin-bottom: .5em;
+        }
+    </style>
+    <body>
+        <p id = 's1' class = 's1'> Hola </p>
+        <button id="btn" class="btn" onclick="Visibilidad()" value="Ocultar/Mostrar">
+            Ocultar / Mostrar</button>
+        <p class = 's2'form>Correo electronico:</p>
+        <input id="email" type="email" name="email" required>
+        <button id="valida" type="submit" style="font-family: helvetica;">Validar</button>
+        <div id="resultado" style="font-family: helvetica; margin-top: .5em; margin-left: .1;"></div>
+
+
+        
+        <script>
+            function Visibilidad(){
+                    if (document.getElementById("s1").style.visibility == "hidden")
+                    document.getElementById("s1").style.visibility = "visible"
+                    else
+                    document.getElementById("s1").style.visibility = "hidden"                   
+                }
+                
+          function validarEmail(email) {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+          }
+
+          function valida() {
+            $("#resultado").text("");
+            var emailaddress = $("#email").val();
+            if (validarEmail(emailaddress)) {
+              $("#resultado").text("El Email: " + emailaddress + " es valido");
+              $("#resultado").css("color", "green");
+            } else {
+              $("#resultado").text("El Email: " + emailaddress + " no es valido");
+              $("#resultado").css("color", "red");
+            }
+            return false;
+          }
+          $("#valida").bind("click", valida);
+        </script>
+    </body>
+</html>
